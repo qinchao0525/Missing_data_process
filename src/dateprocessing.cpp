@@ -20,8 +20,7 @@ const unsigned int numlimit=1000000//limit of data
 
 int main()
 {
-	std::cout << "Êı¾İ´¦ÀíÖĞ:\n";
-////////////////////ÎÄ¼şµÄ¶ÁÈ¡ºÍÊı¾İµÄ¹éÒ»»¯//////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////
 	std::vector<int> Num;
 	std::vector<std::string> TZ;
 	std::vector<double> F;
@@ -53,10 +52,9 @@ int main()
 	}
 	fin.close();
 	int datanum = Num.size();
-	int nd = datanum / 4;//ËÄ¸öÕì²éÕ¾
+	int nd = datanum / 4;
 	std::vector<double> TZ_1(TZ.size());
 	std::vector<double> Mod_1(Mod.size());
-	//¶Ôstring¶ÔÏóÊ¹ÓÃÊı×Ö±íÊ¾¶¨Æµ£¬ÌøÆµ£¬À©ÆµÈ¡ÆµÂÊ
 	for (int p = 0; p < datanum; p++)
 	{
 		if (TZ[p] == "-1")
@@ -64,7 +62,6 @@ int main()
 		else
 			TZ_1[p] = (double)count(TZ.begin(), TZ.end(), TZ[p]) / TZ.size();
 	}
-	//AM,FM,QPSK,8QAM,4FSK,È¡ÆµÂÊ
 	for (int pm = 0; pm < datanum; pm++)
 	{
 		if (Mod[pm] == "-1")
@@ -72,7 +69,6 @@ int main()
 		else
 			Mod_1[pm] = (double)count(Mod.begin(), Mod.end(), Mod[pm]) / Mod.size();
 	}
-	//×ª»»Êı¾İµ½ÀàÊı×éÖĞÈ¥
 	std::vector<DataClass> dataclass(datanum);
 	for (int i = 0; i < datanum; i++)
 	{
@@ -88,44 +84,39 @@ int main()
 		dataclass[i].Set_tz(TZ[i]);
 		dataclass[i].Set_mod(Mod[i]);
 	}
-////////////////////µçÌ¨ÏÈÑéÖªÊ¶¿â¶ÁÈ¡/////////////////////////////////////
+/////////////////////////////////////////////////////////
 	const int dt_num = 9;
 	std::vector<DataClass> diantai(dt_num);
-	checkread(diantai, dt_num);//´ËºódiantaiÊı×éÖĞ°üº¬×ÅÏÈÑéµçÌ¨ÖªÊ¶
+	checkread(diantai, dt_num);//
 
-///////¶ÁÈ¡´¦ÀíÍê±Ï£¬ĞÅÏ¢ÎªNum£¬TZ_1£¬F£¬BW£¬Mod_1£¬P£¬Jingdu£¬Weidu£¬High//////
-/*
-    ¶ÔÔ­Ê¼Êı¾İ¼¯½øĞĞ»®·Ö,0-Êı¾İÍê±¸£¬1-Ê±¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§£¬2-¿Õ¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§£¬3-Ê±¼ä¿Õ¼äÏà¹ØĞÔÊı¾İÈ±Ê§£¬
-	4-Ê±¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§£¬5-¿Õ¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§£¬6-Ê±¼ä¿Õ¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§¡£
-*/
 	std::vector<int> flag(datanum);
 	for (int f = 0; f < datanum; f++)
 	{
 		if (dataclass[f].IsFull())
-			flag[f] = 0;//0-Êı¾İÍê±¸
+			flag[f] = 0;//0-¸
 		else if (dataclass[f].Timedatadef())
-			flag[f] = 1;//1-Ê±¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§
+			flag[f] = 1;//1-
 		else if (dataclass[f].Spacedatadef())
-			flag[f] = 2;//2-¿Õ¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§
+			flag[f] = 2;//2-
 		else if (dataclass[f].TSdatadef())
-			flag[f] = 3;//3-Ê±¼ä¡¢¿Õ¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§
+			flag[f] = 3;//3-
 		else if (dataclass[f].Talldef())
-			flag[f] = 4;//4-Ê±¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§
+			flag[f] = 4;//4-
 		else if (dataclass[f].Salldef())
-			flag[f] = 5;//5-¿Õ¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§
+			flag[f] = 5;//5-
 		else
-			flag[f] = 6;//6-Êı¾İÈ«²¿È±Ê§
+			flag[f] = 6;//6-
 	}
 	for (int ii = 0; ii < 100; ii++)
 		std::cout << flag[ii] << "\t";
 	/*	std::cout << dataclass[7].getf() << "\n";
 	std::cout << dataclass[7].Spacedatadef() << "\n";*/
-////¶Ô²»Í¬Çé¿öµÄÏÂµÄÊı¾İ½øĞĞ²»Í¬µÄ´¦Àí£¬²»Í¬Çé¿öÊı¾İµÄÅĞ¶ÏÊÇ¸ù¾İflagÖĞµÄÖµ¡£
+////
 	for (int i = 0; i < datanum; i++)
 	{
 		if (flag[i] == 0)
 			continue;
-		else if (flag[i] == 1)//Ê±¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§´¦Àí£¬Î»ÖÃ0£¬1£¬2·Ö±ğ´ú±í¾­¶È£¬Î³¶È£¬¸ß¶È
+		else if (flag[i] == 1)//
 		{
 			if (dataclass[i].getj() == -1)
 				interpolations(dataclass[i], 0, dataclass, datanum, flag);
@@ -134,7 +125,7 @@ int main()
 			else
 				interpolations(dataclass[i], 2, dataclass, datanum, flag);
 		}
-		else if (flag[i] == 2)//¿Õ¼äÏà¹ØĞÔÊı¾İ²¿·ÖÈ±Ê§´¦Àí, 0£¬1£¬2£¬3£¬4·Ö±ğ´ú±íÌåÖÆ£¬ÆµÂÊ£¬´ø¿í£¬Ä£Ê½ºÍ¹¦ÂÊ
+		else if (flag[i] == 2)//
 		{
 			if (dataclass[i].gettz() == -1)
 				spaceknn(dataclass[i], i, 0, dataclass, datanum, flag, 4);
@@ -147,11 +138,11 @@ int main()
 			else
 				spaceknn(dataclass[i], i, 4, dataclass, datanum, flag, 4);
 		}
-		else if (flag[i] == 3)//Ê±¼ä¿Õ¼äÏà¹ØĞÔÊı¾İ¾ù³öÏÖÈ±Ê§
+		else if (flag[i] == 3)//
 		{
 			comparison_pro(dataclass[i], diantai, 9);
 		}
-		else if (flag[i] == 4)//Ê±¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§
+		else if (flag[i] == 4)//
 		{
 			int n = 6;
 			double a[6];
@@ -163,7 +154,7 @@ int main()
 			relations(dataclass[i], 2, dataclass, datanum, flag, a, n);
 			dataclass[i].Seth(GM_returnk_1(a, n));
 		}
-		else if (flag[i] == 5)//¿Õ¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§
+		else if (flag[i] == 5)//
 			continue;
 		else
 			dataclass[i].datadelete();
@@ -188,9 +179,6 @@ int main()
 	}
 	fout.close();
 	std::cout << "\n´¦ÀíÍê±Ï£¡" << std::endl;
-/*	std::cout << "ÊÖ¶¯ÊäÈëÒ»ĞĞÈ±Ê§Êı¾İ¼¯£º \n" << std::endl;
-	DataClass sd_data;
-	std::cin >> sd_data.Settz;*/
 
 
 	system("pause");

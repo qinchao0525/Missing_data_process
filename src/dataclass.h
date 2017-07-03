@@ -10,7 +10,7 @@ Latest modfiying time:2016/12/5
 class DataClass{
 private:
 	int num;
-	double tz;//´æ´¢×ª»»ºóµÄÊı×ÖÊı¾İ
+	double tz;//´
 	double f;
 	double bw;
 	double mod;
@@ -18,7 +18,7 @@ private:
 	double jingdu;
 	double weidu;
 	double high;
-	std::string _tz;//´æ´¢×Ö·û´®ĞÎÊÆµÄÊı¾İ
+	std::string _tz;//´
 	std::string _mod;//
 public:
 	DataClass()
@@ -27,14 +27,14 @@ public:
 		mod = 0; p = 0; jingdu = 0; weidu = 0;
 		high = 0;_tz = "0";_mod = "0";
 	}
-	bool IsFull();//ÅĞ¶ÏÊÇ·ñÊÇÍê±¸Êı¾İ
-	bool Timedatadef();//ÅĞ¶ÏÊÇ·ñÊÇÊ±¼äÏà¹ØĞÔÊı¾İÈ±Ê§
-	bool Spacedatadef();//ÅĞ¶ÏÊÇ·ñÊÇ¿Õ¼äÏà¹ØĞÔÊı¾İÈ±Ê§
-	bool TSdatadef();//ÅĞ¶ÏÊÇ·ñÊÇÊ±¼äÏà¹ØºÍ¿Õ¼äÏà¹ØĞÔÊı¾İ¶¼È±Ê§
-	bool Talldef();//ÅĞ¶ÏÊÇ·ñÊÇÊ±¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§
-	bool Salldef();//ÅĞ¶ÏÊÇ·ñÊÇ¿Õ¼äÏà¹ØĞÔÊı¾İÈ«²¿È±Ê§
-	bool Alldef();//ÅĞ¶ÏÊÇ·ñÊÇÊı¾İÈ«²¿È±Ê§
-	void datadelete()//É¾³ıÊı¾İ
+	bool IsFull();//
+	bool Timedatadef();
+	bool Spacedatadef();//
+	bool TSdatadef();//
+	bool Talldef();//
+	bool Salldef();//
+	bool Alldef();//
+	void datadelete()//
 	{
 		num = 0; tz = 0; f = 0; bw = 0;
 		mod = 0; p = 0; jingdu = 0; weidu = 0;

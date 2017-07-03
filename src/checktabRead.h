@@ -11,13 +11,6 @@ Modfiying time:2016/12/6
 #include <string>
 #include "dataclass.h"
 /*
-函数名：checkread
-作用：读取先验电台知识
-输入：
-std::vector<DataClass> &dt ------- 类数组，用来存储先验电台知识
-int d ------ 先验电台的数量
-输出：
-输出为空，修改后的值以类数组的形势抛出
 */
 
 void checkread(std::vector<DataClass> &dt, int d)

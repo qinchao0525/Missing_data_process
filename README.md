@@ -6,9 +6,9 @@ This code is just for static data, not for streaming data.<br>
 
 ## 2. Algorithms 算法
 ### 2.1	基于插值法的缺失数据填充方法
-在网络中，侦查节点的数据相关性的强弱由相关系数的大小所决定。在该方法中采用皮尔逊相关系数求各项数据的相关性<br>
+在网络中，节点的数据相关性的强弱由相关系数的大小所决定。在该方法中采用皮尔逊相关系数求各项数据的相关性<br>
 相关系数是按照积差方法计算，同样以两变量与各自平均值的离差为基础，通过两个离差相乘来反映两变量之间的相关程度。 <br>
-相关系数大于0.8时为强相关数据。按照如下方法去估算缺失数据值：<br>
+规定相关系数大于0.8时为强相关数据。按照如下方法去估算缺失数据值：<br>
 1）	计算缺失数据项与已知完备的数据项的相关性系数，并把相关性大于0.8的数据项按照相关性从高到低排序；<br>
 2）	利用线性插值法对数据进行估计<br>
 3）	判断数据序列是否是稳态序列，如果是非稳态序列，进行查分处理，直到变成稳态序列。<br>
@@ -24,3 +24,4 @@ This code is just for static data, not for streaming data.<br>
 ## 3. 实现
 实现框图如下所示<br>
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/processing_struct.jpg)
+<center> 处理框架 </center>

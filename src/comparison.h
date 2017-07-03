@@ -11,21 +11,13 @@ Modfiying time:2016/12/6
 # include <vector>
 # include "checktabRead.h"
 /*
-函数名：comparison_pro
-作用：与先验电台库知识对比，寻找匹配数据
-输入：
-DataClass &ddc ------ 缺失数据
-std::vector<DataClass> dd ------ 先验电台知识库
-int ddnum ------ 先验电台的数量
-输出：
-输出为空，填充后的值直接以原数据类抛出
 */
 void comparison_pro(DataClass &ddc, std::vector<DataClass> dd, int ddnum)
 {
 	int n=0;
 	int k = 0;
 	//开始对比，寻找最合适的数据集
-	for (int i = 0; i < ddnum; i++) //ddnum=9为先验知道的电台数目
+	for (int i = 0; i < ddnum; i++) //
 	{
 		if ((ddc.getf() == dd[i].getf() || ddc.getf() == -1) && (ddc.getbw() == dd[i].getbw() || ddc.getbw() == -1) &&
 			(ddc.get_mod() == dd[i].get_mod() || ddc.get_mod() == "-1") && (ddc.get_tz() == dd[i].get_tz() || ddc.get_tz() == "-1") && (ddc.getp() == dd[i].getp() || ddc.getp() == -1) &&

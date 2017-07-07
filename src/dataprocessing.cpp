@@ -20,7 +20,7 @@ const unsigned int numlimit=1000000//limit of data
 
 int main()
 {
-//////////////////////////////////////////////////////////////////////
+////////////////read data///////////////////////////////////////////////
 	std::vector<int> Num;
 	std::vector<std::string> TZ;
 	std::vector<double> F;
@@ -93,19 +93,19 @@ int main()
 	for (int f = 0; f < datanum; f++)
 	{
 		if (dataclass[f].IsFull())
-			flag[f] = 0;//0-¸
+			flag[f] = 0;//0-¸data all missing
 		else if (dataclass[f].Timedatadef())
-			flag[f] = 1;//1-
+			flag[f] = 1;//1-timerelated data missing
 		else if (dataclass[f].Spacedatadef())
-			flag[f] = 2;//2-
+			flag[f] = 2;//2-spacerelated data missing
 		else if (dataclass[f].TSdatadef())
-			flag[f] = 3;//3-
+			flag[f] = 3;//3-timerelated and spacerelated data missing
 		else if (dataclass[f].Talldef())
-			flag[f] = 4;//4-
+			flag[f] = 4;//4-timerelated data all missing
 		else if (dataclass[f].Salldef())
-			flag[f] = 5;//5-
+			flag[f] = 5;//5-spacerelated data all missing
 		else
-			flag[f] = 6;//6-
+			flag[f] = 6;//6-data all missing
 	}
 	for (int ii = 0; ii < 100; ii++)
 		std::cout << flag[ii] << "\t";

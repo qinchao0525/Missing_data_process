@@ -12,7 +12,7 @@ Modfiying time:2016/12/6
 #include "dataclass.h"
 /*
 */
-
+//function to read data in static file.
 void checkread(std::vector<DataClass> &dt, int d)
 {
 	std::vector<int> Num_c;

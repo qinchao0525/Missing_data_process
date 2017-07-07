@@ -7,6 +7,7 @@ Latest modfiying time:2016/12/5
 #ifndef DATACLASS_H_
 #define DATACLASS_H_
 #include <string>
+//data class that will be processed.
 class DataClass{
 private:
 	int num;

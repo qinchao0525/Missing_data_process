@@ -20,8 +20,7 @@ const unsigned int numlimit=1000000//limit of data
 
 int main()
 {
-	std::cout << "数据处理中:\n";
-////////////////////文件的读取和数据的归一化//////////////////////////////////////////////////
+////////////////read data///////////////////////////////////////////////
 	std::vector<int> Num;
 	std::vector<std::string> TZ;
 	std::vector<double> F;
@@ -53,10 +52,9 @@ int main()
 	}
 	fin.close();
 	int datanum = Num.size();
-	int nd = datanum / 4;//四个侦查站
+	int nd = datanum / 4;
 	std::vector<double> TZ_1(TZ.size());
 	std::vector<double> Mod_1(Mod.size());
-	//对string对象使用数字表示定频，跳频，扩频取频率
 	for (int p = 0; p < datanum; p++)
 	{
 		if (TZ[p] == "-1")
@@ -64,7 +62,6 @@ int main()
 		else
 			TZ_1[p] = (double)count(TZ.begin(), TZ.end(), TZ[p]) / TZ.size();
 	}
-	//AM,FM,QPSK,8QAM,4FSK,取频率
 	for (int pm = 0; pm < datanum; pm++)
 	{
 		if (Mod[pm] == "-1")
@@ -72,7 +69,6 @@ int main()
 		else
 			Mod_1[pm] = (double)count(Mod.begin(), Mod.end(), Mod[pm]) / Mod.size();
 	}
-	//转换数据到类数组中去
 	std::vector<DataClass> dataclass(datanum);
 	for (int i = 0; i < datanum; i++)
 	{
@@ -88,44 +84,39 @@ int main()
 		dataclass[i].Set_tz(TZ[i]);
 		dataclass[i].Set_mod(Mod[i]);
 	}
-////////////////////电台先验知识库读取/////////////////////////////////////
+/////////////////////////////////////////////////////////
 	const int dt_num = 9;
 	std::vector<DataClass> diantai(dt_num);
-	checkread(diantai, dt_num);//此后diantai数组中包含着先验电台知识
+	checkread(diantai, dt_num);//
 
-///////读取处理完毕，信息为Num，TZ_1，F，BW，Mod_1，P，Jingdu，Weidu，High//////
-/*
-    对原始数据集进行划分,0-数据完备，1-时间相关性数据部分缺失，2-空间相关性数据部分缺失，3-时间空间相关性数据缺失，
-	4-时间相关性数据全部缺失，5-空间相关性数据全部缺失，6-时间空间相关性数据全部缺失。
-*/
 	std::vector<int> flag(datanum);
 	for (int f = 0; f < datanum; f++)
 	{
 		if (dataclass[f].IsFull())
-			flag[f] = 0;//0-数据完备
+			flag[f] = 0;//0-竏ata all missing
 		else if (dataclass[f].Timedatadef())
-			flag[f] = 1;//1-时间相关性数据部分缺失
+			flag[f] = 1;//1-timerelated data missing
 		else if (dataclass[f].Spacedatadef())
-			flag[f] = 2;//2-空间相关性数据部分缺失
+			flag[f] = 2;//2-spacerelated data missing
 		else if (dataclass[f].TSdatadef())
-			flag[f] = 3;//3-时间、空间相关性数据部分缺失
+			flag[f] = 3;//3-timerelated and spacerelated data missing
 		else if (dataclass[f].Talldef())
-			flag[f] = 4;//4-时间相关性数据全部缺失
+			flag[f] = 4;//4-timerelated data all missing
 		else if (dataclass[f].Salldef())
-			flag[f] = 5;//5-空间相关性数据全部缺失
+			flag[f] = 5;//5-spacerelated data all missing
 		else
-			flag[f] = 6;//6-数据全部缺失
+			flag[f] = 6;//6-data all missing
 	}
 	for (int ii = 0; ii < 100; ii++)
 		std::cout << flag[ii] << "\t";
 	/*	std::cout << dataclass[7].getf() << "\n";
 	std::cout << dataclass[7].Spacedatadef() << "\n";*/
-////对不同情况的下的数据进行不同的处理，不同情况数据的判断是根据flag中的值。
+////
 	for (int i = 0; i < datanum; i++)
 	{
 		if (flag[i] == 0)
 			continue;
-		else if (flag[i] == 1)//时间相关性数据部分缺失处理，位置0，1，2分别代表经度，纬度，高度
+		else if (flag[i] == 1)//
 		{
 			if (dataclass[i].getj() == -1)
 				interpolations(dataclass[i], 0, dataclass, datanum, flag);
@@ -134,7 +125,7 @@ int main()
 			else
 				interpolations(dataclass[i], 2, dataclass, datanum, flag);
 		}
-		else if (flag[i] == 2)//空间相关性数据部分缺失处理, 0，1，2，3，4分别代表体制，频率，带宽，模式和功率
+		else if (flag[i] == 2)//
 		{
 			if (dataclass[i].gettz() == -1)
 				spaceknn(dataclass[i], i, 0, dataclass, datanum, flag, 4);
@@ -147,11 +138,11 @@ int main()
 			else
 				spaceknn(dataclass[i], i, 4, dataclass, datanum, flag, 4);
 		}
-		else if (flag[i] == 3)//时间空间相关性数据均出现缺失
+		else if (flag[i] == 3)//
 		{
 			comparison_pro(dataclass[i], diantai, 9);
 		}
-		else if (flag[i] == 4)//时间相关性数据全部缺失
+		else if (flag[i] == 4)//
 		{
 			int n = 6;
 			double a[6];
@@ -163,7 +154,7 @@ int main()
 			relations(dataclass[i], 2, dataclass, datanum, flag, a, n);
 			dataclass[i].Seth(GM_returnk_1(a, n));
 		}
-		else if (flag[i] == 5)//空间相关性数据全部缺失
+		else if (flag[i] == 5)//
 			continue;
 		else
 			dataclass[i].datadelete();
@@ -188,9 +179,6 @@ int main()
 	}
 	fout.close();
 	std::cout << "\n处理完毕！" << std::endl;
-/*	std::cout << "手动输入一行缺失数据集： \n" << std::endl;
-	DataClass sd_data;
-	std::cin >> sd_data.Settz;*/
 
 
 	system("pause");

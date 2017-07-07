@@ -18,7 +18,7 @@ int n ------ È±Ê§ÊôĞÔ0-Í¨ĞÅÌåÖÆÈ±Ê§£¬1-ÆµÂÊÈ±Ê§£¬2-´ø¿íÈ±Ê§£¬3-µ÷ÖÆ·½Ê½È±Ê§£¬4-¹
 std::vector<DataClass> &vdc ------ Êı¾İÀàÊı×é
 int vdc_num ------ ÀàÊı×éµÄÔªËØ¸öÊı
 std::vector<int> &f) ------ ±íÊ¾flag£¬Êı¾İµÄ±êÖ¾Î»Êı×é
-int z_num ------ ÎªÕì²éÕ¾µÄÊıÄ¿
+int z_num ------ 
 Êä³ö£º
 Êä³öÎª¿Õ£¬ĞŞ¸ÄºóµÄÊı¾İÒÔÔ­È±Ê§Êı¾İÀàÅ×³ö
 */
@@ -26,7 +26,7 @@ void spaceknn(DataClass &dc, int i, int n, std::vector<DataClass> &vdc, int vdc_
 {
 	int e_num = vdc_num / z_num;
 	int kk = i - (dc.getnum() - 1) * e_num;//È±Ê§Êı¾İµÄÏà¶ÔÎ»ÖÃ£¬¿ÉÎªÒÔºó¿ÉĞŞ¸ÄÊ±¼ä×÷Îª±ê³ß
-	int dc_n = i / e_num + 1;//µÚ¼¸¸öÕì²éÕ¾
+	int dc_n = i / e_num + 1;//
 	//std::cout << kk;
 	switch (n)
 	{

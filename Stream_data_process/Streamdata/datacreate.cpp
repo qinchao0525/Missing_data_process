@@ -58,7 +58,7 @@ int main(int argc, char* argv[])
 		}
 	}
 	double mr;
-	cout<<"Please enter the missing rate(precision 0.00): ";
+	//cout<<"Please enter the missing rate(precision 0.00): ";
 	cin>>mr;
 	mr*=100;
 
@@ -78,7 +78,7 @@ int main(int argc, char* argv[])
 	info[2].high      = 11250;
 	info[2].iff       = 1;
 
-	cout<<"start outing..."<<endl;
+	//cout<<"start outing..."<<endl;
 	int i;
 	srand(time(NULL));
 	//time utime

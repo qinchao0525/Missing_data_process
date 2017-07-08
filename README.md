@@ -32,3 +32,6 @@ This code is just for static data, not for streaming data.<br>
 
 ## 2. 处理流程图
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/struct_of_streamdata.png)
+
+## 3. 添加的新实现
+完成了新的代码编程，完成了流失处理代码编程，暂时缺乏业务逻辑测试。<br>

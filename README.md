@@ -32,3 +32,7 @@ This code is just for static data, not for streaming data.<br>
 滑动窗口模型在于对流式数据处理，处理的想法初衷在于用部分缓冲区去存下，存下的数据进行处理，然后边存边处理，因此数据处理的速率取决于缓冲区的大小，而且还有处理算法的优劣。
 ## 2. 处理流程图
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/struct_of_streamdata.png)
+说明：<br>
+对于缺失数据流，首先对确实数据进行缺失判断，对具有缺失的数据进行处理。处理的过程首先需要确定滑动窗口的大小，然后固定滑动窗口，<br>
+在滑动窗口的内部采用静态不完备信息处理，然后得到完备数据。由于数据流是源源不断进入缺失处理系统，因此，在处理完部分后，再对缓存<br>
+中的数据进行处理，得到完备数据流。

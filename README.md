@@ -25,7 +25,7 @@ This code is just for static data, not for streaming data.<br>
 实现框图如下所示<br>
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/processing_struct.jpg)
 <center> 处理框架 </center>
-
+该图为静态数据缺失处理总框架图，具体流程如下：<br>
 # 流式数据处理
 ## 1. 滑动窗口模型
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/flow_window.png)<br>

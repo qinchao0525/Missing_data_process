@@ -2,7 +2,7 @@
 This is a project for missing data process with time and space relationship.
 ## 1. Intorduction 简介
 This code is just for static data, not for streaming data.<br>
-程序主要用来做缺失数据处理.
+程序主要用来做缺失数据处理（静态和流失数据处理）.
 
 ## 2. Algorithms 算法
 ### 2.1	基于插值法的缺失数据填充方法
@@ -37,3 +37,4 @@ This code is just for static data, not for streaming data.<br>
 对于缺失数据流，首先对确实数据进行缺失判断，对具有缺失的数据进行处理。处理的过程首先需要确定滑动窗口的大小，然后固定滑动窗口，<br>
 在滑动窗口的内部采用静态不完备信息处理，然后得到完备数据。由于数据流是源源不断进入缺失处理系统，因此，在处理完部分后，再对缓存<br>
 中的数据进行处理，得到完备数据流。
+## 3.测试数据的产生

@@ -38,6 +38,8 @@ This code is just for static data, not for streaming data.<br>
 在滑动窗口的内部采用静态不完备信息处理，然后得到完备数据。由于数据流是源源不断进入缺失处理系统，因此，在处理完部分后，再对缓存<br>
 中的数据进行处理，得到完备数据流。
 ## 3.测试数据的产生
+进入目录：https://github.com/qinchao0525/Missing_data_process/tree/streampro/Stream_data_process/Streamdata<br>
+在目录下make，可以生成数据发生器，然后使用./执行。
 使用方法：<br>
 Explain:<br>
 usage -kb +datarate.<br>

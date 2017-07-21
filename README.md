@@ -30,7 +30,7 @@ This code is just for static data, not for streaming data.<br>
 # 流式数据处理
 ## 1. 滑动窗口模型
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/flow_window.png)<br>
-滑动窗口模型在于对流式数据处理，处理的想法初衷在于用部分缓冲区去存下，存下的数据进行处理，然后边存边处理，因此数据处理的速率取决于缓冲区的大小，而且还有处理算法的优劣。
+滑动窗口模型在于对流式数据处理，处理的想法初衷在于用部分缓冲区去存下，存下的数据进行处理，然后边存边处理，因此数据处理的速率取决于缓冲区的大小，而且还有处理算法的优劣。改变滑动窗口的大小，影响处理数据的快慢，同时影响处理速度。
 ## 2. 处理流程图
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/struct_of_streamdata.png)<br>
 说明：<br>

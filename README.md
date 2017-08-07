@@ -21,7 +21,8 @@ This code is just for static data, not for streaming data.<br>
 在动态定位中，缺失的观测数据值一般应该位于与其相临的两个或若干个观测数据之间。这两个或若干个观测数据就可以看作是这个缺失数据的外推。<br>
 
 ### 2.3 空间相关性数据填充方法（SKNN）
-
+空间相关性数据填充主要是基于传感器空间位置的相关性，再空间上具有相关性的传感器，对于某一属性的检测可能是存在相关联的，利用这种关联特性，可以<br>
+对数据进行k近邻数据填充。
 ## 3. 实现
 实现框图如下所示<br>
 ![image](https://github.com/qinchao0525/Missing_data_process/blob/master/picture/processing_struct.jpg)
